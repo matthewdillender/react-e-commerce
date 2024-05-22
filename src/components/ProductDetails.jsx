@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { LoginRegisterModal } from "./LoginRegister";
 
 export function ProductDetails() {
   const { productId } = useParams(); // Extract productId from URL parameter
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -29,6 +31,16 @@ export function ProductDetails() {
     };
   }, [productId]); // Fetch product whenever productId changes
 
+  const handleAddToCart = () => {
+    // Show the modal when Add to Cart button is clicked
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    // Close the modal
+    setShowModal(false);
+  };
+
   if (loading || !product) {
     return <div>Loading...</div>;
   }
@@ -43,6 +55,8 @@ export function ProductDetails() {
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
       {/* Add more product details as needed */}
+      <button onClick={handleAddToCart}>Add to Cart</button>
+      <LoginRegisterModal showModal={showModal} closeModal={closeModal} />
     </div>
   );
 }
