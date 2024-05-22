@@ -1,6 +1,6 @@
-// ProductListing.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Card, Button, Row, Col } from "react-bootstrap";
 
 export function ProductListing() {
   const [products, setProducts] = useState([]);
@@ -20,18 +20,23 @@ export function ProductListing() {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <h2>Product Listing</h2>
-      <ul>
+      <Row>
         {products.map((product) => (
-          <li key={product.id}>
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-            <p>Price: ${product.price}</p>
-            {/* Add more product details as needed */}
-          </li>
+          <Col key={product.id} md={4}>
+            <Card className="mb-4" style={{ width: "18rem" }}>
+              <Card.Img variant="top" src={product.image} />
+              <Card.Body>
+                <Card.Title>{product.name}</Card.Title>
+                <Card.Text>{product.description}</Card.Text>
+                <p>Price: ${product.price}</p>
+                <Button variant="primary">View Details</Button>
+              </Card.Body>
+            </Card>
+          </Col>
         ))}
-      </ul>
+      </Row>
     </div>
   );
 }
