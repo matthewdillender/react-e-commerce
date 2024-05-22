@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { LoginRegisterModal } from "./LoginRegister";
 
 export function ProductDetails() {
   const { productId } = useParams(); // Extract productId from URL parameter
@@ -56,7 +55,6 @@ export function ProductDetails() {
       <p>Price: ${product.price}</p>
       {/* Add more product details as needed */}
       <button onClick={handleAddToCart}>Add to Cart</button>
-      <LoginRegisterModal showModal={showModal} closeModal={closeModal} />
     </div>
   );
 }
