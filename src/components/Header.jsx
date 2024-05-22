@@ -28,6 +28,16 @@ export function Header() {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
+                  Shop
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  Private Lessons
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
                   Link
                 </a>
               </li>
