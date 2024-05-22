@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card, Button, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export function ProductListing() {
   const [products, setProducts] = useState([]);
@@ -31,7 +32,15 @@ export function ProductListing() {
                 <Card.Title>{product.name}</Card.Title>
                 <Card.Text>{product.description}</Card.Text>
                 <p>Price: ${product.price}</p>
-                <Button variant="primary">View Details</Button>
+                <Link
+                  to={{
+                    pathname: `/product/${product.id}`,
+                    state: { product: product },
+                  }}
+                  className="btn btn-primary"
+                >
+                  View Details
+                </Link>
               </Card.Body>
             </Card>
           </Col>
